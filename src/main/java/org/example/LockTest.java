@@ -6,8 +6,8 @@ import java.util.concurrent.locks.ReentrantLock;
 
 public class LockTest {
 
-  private static Object lock = new Object();
-  private static ReentrantLock reentrantLock = new ReentrantLock();
+  private static final Object lock = new Object();
+  private static final ReentrantLock reentrantLock = new ReentrantLock();
   private static long cnt = 0;
 
   @Benchmark
@@ -45,6 +45,11 @@ public class LockTest {
   }
 
   private long doSomething() {
+//    long cnt = 0;
+//    Random random = new Random();
+//    for (int i = 0; i < 2; i++) {
+//      cnt += random.nextInt();
+//    }
     cnt += 1;
     if (cnt == (Long.MAX_VALUE)) {
       cnt = 0;
